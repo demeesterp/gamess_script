@@ -25,7 +25,7 @@ do
     echo "copy file $file to gamess execution envrionment"
     cp -f $INPUTDIR/$file ./$file
     echo "Start executing $file on $(date)"
-    rungms $file 00 8 >& $file.log
+    ./rungms $file 00 8 >& $file.log
     cp -f *.log $OUTPUTDIR
     rm -f *.log
     rm -f $file
