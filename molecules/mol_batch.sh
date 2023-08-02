@@ -22,10 +22,11 @@ fi
 inputfiles=$(ls $INPUTDIR)
 for file in $inputfiles
 do
+    inputname=${file%'.inp'}
     echo "copy file $file to gamess execution envrionment"
     cp -f $INPUTDIR/$file ./$file
     echo "Start executing $file on $(date)"
-    ./rungms $file 00 8 | tee -a $file.log
+    ./rungms $inputname 00 8 | tee -a $inputname.log
     cp -f *.log $OUTPUTDIR
     rm -f *.log
     rm -f $file
